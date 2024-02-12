@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 
-const Game = () => {
+const Game = ({ score, setScore, highScore, setHighScore }) => {
   const [cards, setCards] = useState([]);
-  const [score, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
+//   const [score, setScore] = useState(0);
+//   const [highScore, setHighScore] = useState(0);
 
   // Function to initialize cards
   const initializeCards = () => {
@@ -34,17 +34,21 @@ const Game = () => {
     setCards(updatedCards);
 
     if (!clickedCard.clicked) {
-      // Card hasn't been clicked before
-      setScore(score + 1);
-      if (score + 1 > highScore) {
-        setHighScore(score + 1);
+      //Card hasn't been clicked before
+      let newScore = score + 1;
+      setScore(newScore);
+      if (newScore > highScore) {
+        setHighScore(newScore);
       }
       shuffleCards();
+     
+
     } else {
       // Card has been clicked before, game over
       setScore(0);
       setCards(cards.map((card) => ({ ...card, clicked: false })));
       shuffleCards();
+      console.log("card has been clicked before");
     }
   };
 
