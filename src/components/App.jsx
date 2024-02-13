@@ -4,11 +4,9 @@ import Game from './Game';
 import './styles/App.css'
 
 const App = () => {
- 
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
- 
- 
+
   return (
     <div className="app">
       <Header score={score} highScore={highScore} />
@@ -20,6 +18,9 @@ const App = () => {
       />
     </div>
   );
+
+ 
+ 
 };
 
 export default App;

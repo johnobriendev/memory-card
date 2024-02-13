@@ -3,7 +3,7 @@ import React from 'react';
 const Header = ({ score, highScore }) => {
   return (
     <div className="header">
-      <h1>Memory Game</h1>
+      <h1>Memory Card</h1>
       <div>
         <p>Score: {score}</p>
         <p>High Score: {highScore}</p>

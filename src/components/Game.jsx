@@ -1,68 +1,90 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
+import { v4 as uuidv4 } from 'uuid';
+
+
+let cardArr  = [1, 2, 3, 4, 5, 6];
 
 const Game = ({ score, setScore, highScore, setHighScore }) => {
   const [cards, setCards] = useState([]);
-//   const [score, setScore] = useState(0);
-//   const [highScore, setHighScore] = useState(0);
+//    const [score, setScore] = useState(0);
+//    const [highScore, setHighScore] = useState(0);
+   const [selectedCards, setSelectedCards] = useState([]);
+
+   useEffect(() => {
+    initializeCards();
+  }, []);
 
   // Function to initialize cards
   const initializeCards = () => {
-    const initialCards = Array.from({ length: 5 }, (_, index) => ({
-      id: index,
+    const initialCards = cardArr.map((card, index) => ({
+        ...card,
+        id: index,
       number: index + 1,
-      isClicked: false,
+      clicked: false,
     }));
+
+   //setCards(shuffleCards(initialCards));
+    setSelectedCards([]);
+    setScore(0);
+    //shuffleCards(initialCards);
     setCards(initialCards);
+
   };
 
-  // Function to shuffle cards (Fisher-Yates)
-  const shuffleCards = () => {
-    const shuffledCards = [...cards];
-    for (let i = shuffledCards.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledCards[i], shuffledCards[j]] = [shuffledCards[j], shuffledCards[i]];
-    }
-    setCards(shuffledCards);
-  };
+    //   // Function to shuffle cards (Fisher-Yates)
+    //   const shuffleCards = () => {
+    //     const shuffledCards = [...cards];
+    //     for (let i = shuffledCards.length - 1; i > 0; i--) {
+    //       const j = Math.floor(Math.random() * (i + 1));
+    //       [shuffledCards[i], shuffledCards[j]] = [shuffledCards[j], shuffledCards[i]];
+    //     }
+    //     setCards(shuffledCards);
+    //     //return shuffledCards;
+    //   };
 
-  // Function to handle card click
-  const handleCardClick = (clickedCard) => {
-    const updatedCards = cards.map((card) =>
-      card.id === clickedCard.id ? { ...card, clicked: true } : card
-    );
-    setCards(updatedCards);
+    const shuffleCards = () => {
+            return [...cardArr].sort(() => Math.random() - 0.5);
+    };
 
-    if (!clickedCard.clicked) {
-      //Card hasn't been clicked before
-      let newScore = score + 1;
-      setScore(newScore);
-      if (newScore > highScore) {
-        setHighScore(newScore);
-      }
-      shuffleCards();
-     
+    //Function to handle card click
+    const handleCardClick = (clickedCard) => {
+        const updatedCards = cards.map((card) =>
+        card.id === clickedCard.id ? { ...card, clicked: true } : card
+        );
+        setCards(updatedCards);
 
-    } else {
-      // Card has been clicked before, game over
-      setScore(0);
-      setCards(cards.map((card) => ({ ...card, clicked: false })));
-      shuffleCards();
-      console.log("card has been clicked before");
-    }
-  };
+        if (!clickedCard.clicked) {
+        //Card hasn't been clicked before
+        let newScore = score + 1;
+        setScore(newScore);
+        
+        if (newScore > highScore) {
+            setHighScore(newScore);
+        }
+        shuffleCards();
 
 
-  useEffect(() => {
-    initializeCards();
-  }, []);
+        } else {
+        // Card has been clicked before, game over
+        setScore(0);
+        setCards(cards.map((card) => ({ ...card, clicked: false })));
+        shuffleCards();
+        console.log("card has been clicked before");
+        }
+    };
+
+
+
+
 
   return (
     <div className="game">
       {cards.map((card) => (
         <Card
-          key={card.id}
+          key={uuidv4()}
           number={card.number}
+          clicked={card.clicked}
           onClick={() => handleCardClick(card)}
         />
       ))}
