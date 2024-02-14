@@ -9,7 +9,7 @@ const Game = ({ score, setScore, highScore, setHighScore }) => {
   const [cards, setCards] = useState([]);
 //    const [score, setScore] = useState(0);
 //    const [highScore, setHighScore] = useState(0);
-   const [selectedCards, setSelectedCards] = useState([]);
+   //const [selectedCards, setSelectedCards] = useState([]);
 
    useEffect(() => {
     initializeCards();
@@ -24,28 +24,28 @@ const Game = ({ score, setScore, highScore, setHighScore }) => {
       clicked: false,
     }));
 
-   //setCards(shuffleCards(initialCards));
-    setSelectedCards([]);
+    setCards(shuffleCards(initialCards));
+    //setSelectedCards([]);
     setScore(0);
     //shuffleCards(initialCards);
-    setCards(initialCards);
+    //setCards(initialCards);
 
   };
 
-    //   // Function to shuffle cards (Fisher-Yates)
-    //   const shuffleCards = () => {
-    //     const shuffledCards = [...cards];
-    //     for (let i = shuffledCards.length - 1; i > 0; i--) {
-    //       const j = Math.floor(Math.random() * (i + 1));
-    //       [shuffledCards[i], shuffledCards[j]] = [shuffledCards[j], shuffledCards[i]];
-    //     }
-    //     setCards(shuffledCards);
-    //     //return shuffledCards;
-    //   };
+      // Function to shuffle cards (Fisher-Yates)
+      const shuffleCards = (cardArr) => {
+        const shuffledCards = [...cardArr];
+        for (let i = shuffledCards.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffledCards[i], shuffledCards[j]] = [shuffledCards[j], shuffledCards[i]];
+        }
+        //setCards(shuffledCards);
+        return shuffledCards;
+      };
 
-    const shuffleCards = () => {
-            return [...cardArr].sort(() => Math.random() - 0.5);
-    };
+    // const shuffleCards = (cardArr) => {
+    //         return [...cardArr].sort(() => Math.random() - 0.5);
+    // };
 
     //Function to handle card click
     const handleCardClick = (clickedCard) => {
@@ -62,15 +62,16 @@ const Game = ({ score, setScore, highScore, setHighScore }) => {
         if (newScore > highScore) {
             setHighScore(newScore);
         }
-        shuffleCards();
-
+        //shuffleCards();
+        setCards(shuffleCards(updatedCards));
 
         } else {
         // Card has been clicked before, game over
-        setScore(0);
-        setCards(cards.map((card) => ({ ...card, clicked: false })));
-        shuffleCards();
-        console.log("card has been clicked before");
+        // setScore(0);
+        // setCards(cards.map((card) => ({ ...card, clicked: false })));
+        // shuffleCards();
+            console.log("card has been clicked before");
+            initializeCards();
         }
     };
 
