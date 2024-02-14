@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Card = ({ number, onClick }) => {
+const Card = ({ imageUrl, onClick }) => {
   return (
     <div className='card' onClick={onClick}>
-        <p>{number}</p>
+         <img src={imageUrl} />
     </div>
   );
 };
