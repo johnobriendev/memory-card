@@ -1,23 +1,59 @@
 
-/* Mobile */
-
-.card img{
-    height: auto;
-    width: 100%;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
-
+/* Mobile */
+body{
+    background-color: #494D5F;
+    color: #E5EAF5;
+}
+.header{
+    text-align: center;
+    margin-bottom: 40px;
+}
+.app{
+    padding: 20px;
+}
 .game{
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+.card{
+    height:170px;
+    width: 170px;   
+    overflow: hidden;
+}
+.card img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 
 /* Desktop */
 @media only screen and (min-width: 768px) {
-    .game{
+    .app{
+        height:100vh;
+        width: auto;
         display: flex;
-        flex-direction: row;
-    
+        flex-direction: column;
+     }
+   
+    .game{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 10px;
     }
+    .card{
+        height:180px;
+        width:180px;   
+    }
+   
 }

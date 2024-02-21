@@ -10,6 +10,21 @@ let cardArr  = [
     { imageName: 'car', id: 3 },
     { imageName: 'baseball', id: 4 },
     { imageName: 'hat', id: 5 },
+    { imageName: 'jacket', id: 6 },
+    { imageName: 'shoes', id: 7 },
+    { imageName: 'scarf', id: 8 },
+    { imageName: 'bowling', id: 9 },
+    { imageName: 'cat', id: 10 },
+    { imageName: 'dog', id: 11 },
+    { imageName: 'fish', id: 12 },
+    { imageName: 'sun', id: 13 },
+    { imageName: 'moon', id: 14 },
+    { imageName: 'rocket', id: 15 },
+    { imageName: 'basketball', id: 16 },
+    { imageName: 'truck', id: 17 },
+    { imageName: 'guitar', id: 18 },
+    { imageName: 'drums', id: 19 },
+    { imageName: 'house', id: 20 },
 ];
 
 const Game = ({ score, setScore, highScore, setHighScore }) => {
