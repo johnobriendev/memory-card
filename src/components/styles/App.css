@@ -1,20 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "Noto Sans", sans-serif;
 }
 /* Mobile */
 body{
     background-color: #494D5F;
     color: #E5EAF5;
+    
 }
 .header{
     text-align: center;
-    margin-bottom: 40px;
+    margin: 20px 0;
+    /* background-color: #d0bdf4; */
+    height:auto;
+    width: 100%;
 }
+.header h1{
+    font-weight: 200;
+}
+.header p{
+    font-weight: 100;
+}
+
 .app{
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .game{
     display: grid;
