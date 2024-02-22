@@ -88,7 +88,7 @@ const Game = ({ score, setScore, highScore, setHighScore }) => {
         if (newScore > highScore) {
             setHighScore(newScore);
         }
-        //shuffleCards();
+        
         setCards(shuffleCards(updatedCards));
 
         } else {
@@ -96,6 +96,7 @@ const Game = ({ score, setScore, highScore, setHighScore }) => {
         // setScore(0);
         // setCards(cards.map((card) => ({ ...card, clicked: false })));
         // shuffleCards();
+            alert("Game Over. Try again.");
             console.log("card has been clicked before");
             initializeCards();
         }
