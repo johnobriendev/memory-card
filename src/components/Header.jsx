@@ -4,6 +4,7 @@ const Header = ({ score, highScore }) => {
   return (
     <div className="header">
       <h1>Memory Card</h1>
+      <p>Start by clicking an image.</p>
       <p>Try not to click an image more than once!</p>
       <div>
         <p>Score: {score}</p>
